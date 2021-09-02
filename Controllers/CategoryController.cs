@@ -26,7 +26,10 @@ namespace Shop.Controllers
         [Route("")]
         public async Task<ActionResult<Category>> Post([FromBody] Category categoryModel)
         {
-            return categoryModel;
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok(categoryModel);
         }
 
         [HttpPut]
@@ -37,10 +40,13 @@ namespace Shop.Controllers
                 No put é muito comum termos o id de quem queremos alterar, seguido
                 pelo item no corpo da requisição
             */
-            if (categoryModel.Id == id)
-                return categoryModel;
+            if (categoryModel.Id != id)
+                return NotFound(new { message = "Categoria não encontrada" });
 
-            return NotFound();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok(categoryModel);
         }
 
         [HttpDelete]
