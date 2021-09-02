@@ -27,3 +27,8 @@ C:\ViniEspinosa\Projetos\Shop\obj\Debug\net5.0\Shop.dll
 C:\ViniEspinosa\Projetos\Shop\obj\Debug\net5.0\ref\Shop.dll
 C:\ViniEspinosa\Projetos\Shop\obj\Debug\net5.0\Shop.pdb
 C:\ViniEspinosa\Projetos\Shop\obj\Debug\net5.0\Shop.genruntimeconfig.cache
+C:\ViniEspinosa\Projetos\Shop\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\ViniEspinosa\Projetos\Shop\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\ViniEspinosa\Projetos\Shop\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\ViniEspinosa\Projetos\Shop\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\ViniEspinosa\Projetos\Shop\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
