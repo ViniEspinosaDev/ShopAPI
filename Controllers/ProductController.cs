@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shop.Data;
@@ -9,11 +10,13 @@ using Shop.Models;
 
 namespace Shop.Controllers
 {
-    [Route("/products")]
+    // https:localhost:5001/products
+    [Route("v1/products")]
     public class ProductController : ControllerBase
     {
         [HttpGet]
         [Route("")]
+        [AllowAnonymous]
         public async Task<ActionResult<List<Product>>> Get([FromServices] DataContext context)
         {
             // Recupera todos os produtos já vinculados ao Category
@@ -31,6 +34,7 @@ namespace Shop.Controllers
 
         [HttpGet]
         [Route("{id:int}")]
+        [AllowAnonymous]
         public async Task<ActionResult<Product>> GetById(
             int id,
             [FromServices] DataContext context)
@@ -49,6 +53,7 @@ namespace Shop.Controllers
 
         [HttpGet]
         [Route("/categories/{id:int}")]
+        [AllowAnonymous]
         public async Task<ActionResult<List<Product>>> GetByCategory(
             int categoryId,
             [FromServices] DataContext context)
@@ -68,6 +73,7 @@ namespace Shop.Controllers
 
         [HttpPost]
         [Route("")]
+        [Authorize(Roles = "employee")]
         public async Task<ActionResult<Product>> Post(
             [FromBody] Product productModel,
             [FromServices] DataContext context)
@@ -89,6 +95,7 @@ namespace Shop.Controllers
 
         [HttpPut]
         [Route("{id:int}")]
+        [Authorize(Roles = "manager")]
         public async Task<ActionResult<Product>> Put(
             int id,
             [FromBody] Product productModel,
@@ -114,6 +121,7 @@ namespace Shop.Controllers
 
         [HttpDelete]
         [Route("{id:int}")]
+        [Authorize(Roles = "manager")]
         public async Task<ActionResult<Product>> Delete(
             int id,
             [FromServices] DataContext context)
